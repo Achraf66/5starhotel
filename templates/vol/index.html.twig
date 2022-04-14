@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire Vol!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <center>
+    <h1 class="titreadmin"> Liste des Vols  </h1>
+    </center>
+
+    <div class="example-wrapper">
+        <table border="1" class="prize-comp">
+
+
+
+            <th class="prize-comp">Date de depart</th>
+            <th class="prize-comp">Date d'arrivé </th>
+            <th class="prize-comp">Destination</th>
+            <th class="prize-comp">Nombre de place</th>
+            <th class="prize-comp">Heure de depart</th>
+            <th class="prize-comp">Heure d'arrive</th>
+            <th class="prize-comp">Nom vol</th>
+            <th class="prize-comp">Delete</th>
+            <th class="prize-comp">Edit</th>
+
+
+
+            {%for v in vols%}
+                <tr class="prize-comp">
+
+
+                    <td class="prize-comp">{{v.datedepart|date('Y-m-d')}} </td>
+                    <td class="prize-comp">{{v.datearrive|date('Y-m-d')}} </td>
+                    <td class="prize-comp">{{v.destination}}</td>
+                    <td class="prize-comp">{{v.place}}</td>
+                    <td class="prize-comp">{{v.Heuredepart|date('H:i:s')}}</td>
+                    <td class="prize-comp">{{v.Heurearrive|date('H:i:s')}}</td>
+                    <td class="prize-comp">{{v.nomvol}}</td>
+                    <td class="del">
+                        <a href="{{ path('supp_vol',{'id':v.id}) }}"> Supprimer</a>
+                    </td>
+                    <td class="modifier">
+                        <a href="{{ path('editvol',{'id':v.id}) }}"> Modifier</a>
+
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+
+
+        </table>
+
+
+
+
+
+    </div>
+{% endblock %}
